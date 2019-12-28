@@ -21,6 +21,7 @@ class User : Serializable {
             parsedUser.loginId=json.getString("login_id")
             parsedUser.phoneNum=json.getString("phone")
             parsedUser.memo = json.getString("memo")
+            parsedUser.name = json.getString("name")
 
             return parsedUser
         }

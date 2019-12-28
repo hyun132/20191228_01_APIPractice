@@ -1,5 +1,6 @@
 package com.example.a20191228_01_apipractice
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
@@ -23,6 +24,14 @@ class MainActivity : BaseActivity() {
     }
 
     override fun setupEvents() {
+        userListView.setOnItemClickListener { parent, view, position, id ->
+            var data = userList.get(position)
+
+            var intent = Intent(mContext,UserInfoActivity::class.java)
+            intent.putExtra("data",data)
+            startActivity(intent)
+
+        }
 
     }
 
@@ -40,6 +49,8 @@ class MainActivity : BaseActivity() {
                 val code = json.getInt("code")
                 runOnUiThread {
                     if (code == 200){
+
+                        userList.clear()
 
                         val data = json.getJSONObject("data")
                         val users = data.getJSONArray("users")
