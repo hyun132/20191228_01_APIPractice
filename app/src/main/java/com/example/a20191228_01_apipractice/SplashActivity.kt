@@ -22,8 +22,6 @@ class SplashActivity : BaseActivity() {
 
     override fun setValues() {
         openProperActivity()
-
-
     }
 
     fun openProperActivity() {
@@ -38,7 +36,7 @@ class SplashActivity : BaseActivity() {
 //            로그인 토큰이 빈칸이 아니다 => 저장된 토큰이 있다.
 //            로그인 화면이 아니라, 메인화면으로 보내주자
 
-                val intent = Intent(mContext, MyProfileActivity::class.java)
+                val intent = Intent(mContext, MainActivity::class.java)
                 startActivity(intent)
                 finish()
             }
