@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import com.example.a20191228_01_apipractice.datas.User
 import com.example.a20191228_01_apipractice.utils.ConnectServer
 import com.example.a20191228_01_apipractice.utils.ContextUtil
 import kotlinx.android.synthetic.main.activity_main.*
@@ -55,11 +56,14 @@ class MainActivity : BaseActivity() {
                         val data = json.getJSONObject("data")
                         val user = data.getJSONObject("user")
 
-                        val userName = user.getString("name")
-                        val userPhoneNum = user.getString("phone")
+//                        val userName = user.getString("name")
+//                        val userPhoneNum = user.getString("phone")
 
-                        nameTxt.text = userName
-                        phoneTxt.text = userPhoneNum
+                        val loginUser = User.getUserFromJson(user)
+
+                        nameTxt.text = loginUser.name
+                        phoneTxt.text = loginUser.phoneNum
+                        loginIdTxt.text = loginUser.loginId
 
                     }else{
                         Toast.makeText(mContext,"서버에 문제가 있습니다.",Toast.LENGTH_SHORT).show()
