@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="10dp"
-    tools:context=".MainActivity">
+    tools:context=".LoginActivity">
 
     <TextView
         android:layout_width="wrap_content"
@@ -26,12 +26,15 @@
 
     <EditText
         android:id="@+id/pwEdt"
+        android:layout_marginTop="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="textPassword"
         android:hint="비밀번호 입력"/>
 
     <Button
+        android:id="@+id/loginBtn"
+        android:layout_marginTop="20dp"
         android:background="@drawable/red_bordered_round_rect"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
