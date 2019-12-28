@@ -36,6 +36,12 @@ class UserAdapter(context: Context, resId: Int, list:ArrayList<User>):ArrayAdapt
 //         실수했던 부분 ** 리스트에서 값 가져올때 get으로 가져옴
         var data = mList.get(position)
 
+        val nameTxt = row.findViewById<TextView>(R.id.nameTxt)
+        val phoneNumTxt = row.findViewById<TextView>(R.id.phoneNumTxt)
+
+        nameTxt.text = data.name
+        phoneNumTxt.text="(${data.phoneNum})"
+
         return row
     }
 
