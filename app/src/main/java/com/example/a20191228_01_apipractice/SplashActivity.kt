@@ -1,7 +1,6 @@
 package com.example.a20191228_01_apipractice
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import com.example.a20191228_01_apipractice.utils.ContextUtil
@@ -39,7 +38,7 @@ class SplashActivity : BaseActivity() {
 //            로그인 토큰이 빈칸이 아니다 => 저장된 토큰이 있다.
 //            로그인 화면이 아니라, 메인화면으로 보내주자
 
-                val intent = Intent(mContext, MainActivity::class.java)
+                val intent = Intent(mContext, MyProfileActivity::class.java)
                 startActivity(intent)
                 finish()
             }
