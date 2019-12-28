@@ -94,5 +94,40 @@ class ConnectServer {
 
             })
         }
+
+        fun getRequestUserList(context: Context, handler: JsonResponseHandler?){
+
+            val client = OkHttpClient()
+//            GET방식에 맞는 URL생성
+//            => 파라미터가 전부 주소에 노출되도록 작성해야함.
+//            urlBuilder => 단계별로 가공해서 완성하는 개념 : Builder
+            val urlBuilder = HttpUrl.parse("${BASE_URL}/admin/user")!!.newBuilder()
+            urlBuilder.addEncodedQueryParameter("active","ALL")
+
+//            urlBuilder를 이용해 첨부된 파라미터들을 활용, url String으로 저장.
+            val url = urlBuilder.build().toString()
+
+            val request = Request.Builder()
+                .url(url)
+//                .header("X-Http-Token",ContextUtil.getUserToken(context))
+//            GET방식은 제일 기본이 되는 API통신 방식. => 메쏘드를 별도로 표시 x
+                .build()
+
+            client.newCall(request).enqueue(object :Callback{
+                override fun onFailure(call: Call, e: IOException) {
+                    Log.d("서버연결실패",e.localizedMessage)
+                }
+
+                override fun onResponse(call: Call, response: Response) {
+                    val body = response.body()!!.string()  //서버에서 내려준 응답을 string으로 저장.
+                    val json = JSONObject(body)  // string으로 저장된 응답을 json양식으로 가공.
+//                    json변수의 내용을 분석해서 사오항에 따른 처리를 할 수 있게 됨.
+
+//                    JSON 상세 분석 or 결과에 따른 처리를 화면(Activity)로 이관.
+                    handler?.onResponse(json)
+                }
+
+            })
+        }
     }
 }
