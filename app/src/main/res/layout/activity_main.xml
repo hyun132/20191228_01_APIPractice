@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
+    android:orientation="vertical"
     tools:context=".MainActivity">
 
     <TextView
@@ -13,4 +14,9 @@
         android:textSize="30sp"
         android:text="로그인 성공시 볼 화면"/>
 
+    <Button
+        android:id="@+id/logoutBtn"
+        android:text="로그아웃"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
 </LinearLayout>
